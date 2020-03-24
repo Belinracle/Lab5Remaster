@@ -22,7 +22,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "        X "+x+"\n"+
+        return  "       X "+x+"\n"+
                 "       Y "+y+"\n"+
                 "       Z "+z+"\n"+
                 "       Name "+name+"\n";

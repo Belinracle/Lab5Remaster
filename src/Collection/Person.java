@@ -9,14 +9,14 @@ public class Person {
     private String passportID; //Поле не может быть null
     private Location location; //Поле не может быть null
     private List<String> args;
-    Person(List<String> args){
+    public Person(List<String> args){
         this.args=args;
         name = args.get(0);
         weight = Long.parseLong(args.get(1));
         passportID = args.get(2);
         location = new Location(args.subList(3,7));
     }
-    List<String> getArgs(){
+    public List<String> getArgs(){
         return args;
     }
 
@@ -26,5 +26,9 @@ public class Person {
                 "   Weight" + weight+"\n"+
                 "   PassportId " + passportID+"\n"+
                 "   Location \n"+location.toString();
+    }
+
+    boolean equals(Person  anPers) {
+        return args.containsAll(anPers.getArgs());
     }
 }

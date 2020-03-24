@@ -1,9 +1,10 @@
 package Commands;
-
-import Collection.CollectionInterface;
 import IO.IOinterface;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+import java.io.IOException;
+import java.util.List;
 
 public interface Command {
-    void execute(IOinterface io, String[] args, CollectionInterface colInt);
+    void execute(IOinterface io, List<String> args) throws IOException;
+    Validator getValidator();
 }

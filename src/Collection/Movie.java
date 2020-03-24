@@ -18,10 +18,12 @@ public class Movie {
         this.args=args;
         id = Integer.parseInt(args.get(0));
         name = args.get(1);
-        coordinates = new Coordinates(args.subList(2,4));
+        coordinates = new Coordinates(args.subList(3,5));
         creationDate = LocalDate.now();
-        oscarsCount = Integer.parseInt(args.get(4));
-        genre = MovieGenre.valueOf(args.get(5));
+        oscarsCount = Integer.parseInt(args.get(2));
+        if (args.get(5).equals("null")){
+            genre = null;}
+        else {genre = MovieGenre.valueOf(args.get(5));}
         mpaaRating = MpaaRating.valueOf(args.get(6));
         screenwriter = new Person(args.subList(7,14));
     }
@@ -39,5 +41,11 @@ public class Movie {
                 "Movie Genre "+ genre+"\n"+
                 "Mpaa Rating "+ mpaaRating+"\n"+
                 "Screenwriter \n" + screenwriter+"\n";
+    }
+    Person getSc(){
+        return screenwriter;
+    }
+    Integer getId(){
+        return id;
     }
 }

@@ -14,8 +14,9 @@ public class CSVParser implements Parser {
         List<String> args = movie.getArgs();
         StringBuilder sb = new StringBuilder();
         for(String str:args){
-            sb.append(str);
+            sb.append(str).append(",");
         }
+        sb.deleteCharAt(sb.length()-1);
         return sb.toString();
     }
 
