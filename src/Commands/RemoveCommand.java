@@ -10,9 +10,11 @@ import java.util.List;
 public class RemoveCommand implements Command {
     private CollectionInterface ci;
     private Validator val = new Validator("Int");
+    private String name;
     RemoveCommand(CollectionInterface coll, CommandFetch cf){
         cf.addCommand("remove_by_id",this);
         ci=coll;
+        name="remove";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -25,5 +27,10 @@ public class RemoveCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -10,9 +10,11 @@ import java.util.List;
 public class ShowCommand implements Command {
     private CollectionInterface coll;
     private Validator val = new Validator("Any");
+    private String name;
     ShowCommand(CollectionInterface coll,CommandFetch cf){
         this.coll=coll;
         cf.addCommand("show",this);
+        name="show";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -22,5 +24,10 @@ public class ShowCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

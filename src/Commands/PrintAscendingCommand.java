@@ -9,9 +9,11 @@ import java.util.List;
 public class PrintAscendingCommand implements Command {
     private Validator val = new Validator("Any");
     private CollectionInterface ci;
+    private String name;
     PrintAscendingCommand(CollectionInterface ci, CommandFetch cf){
         cf.addCommand("print_ascending",this);
         this.ci=ci;
+        name="print_ascending";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -21,5 +23,10 @@ public class PrintAscendingCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -11,10 +11,13 @@ public class RemoveAllByScCommand implements Command {
     private CollectionInterface ci;
     private Factory fac;
     private Validator val = new Validator("Any");
+    private String name;
     public RemoveAllByScCommand(CollectionInterface ci, CommandFetch cf, Factory fac){
         cf.addCommand("remove_all_by_screenwriter",this);
         this.ci=ci;
         this.fac=fac;
+        val.person();
+        name="remove_all_by_screenwriter";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -24,5 +27,10 @@ public class RemoveAllByScCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

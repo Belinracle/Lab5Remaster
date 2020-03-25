@@ -10,9 +10,11 @@ public class ExecuteCommand implements Command {
     private Validator val = new Validator("Path");
     private CommandFetch cf;
     private IOinterface nio;
+    private String name;
     ExecuteCommand(CommandFetch cf){
         cf.addCommand("execute",this);
         this.cf=cf;
+        name="execute";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -34,5 +36,10 @@ public class ExecuteCommand implements Command {
     @Override
     public Validator getValidator(){
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -10,9 +10,11 @@ import java.util.List;
 public class CountByMpaaCommand implements Command {
     private CollectionInterface ci;
     private Validator val = new Validator("Rating");
+    private String name;
     public CountByMpaaCommand(CollectionInterface ci, CommandFetch cf){
         cf.addCommand("count_by_mpaa_rating",this);
         this.ci=ci;
+        name="count_by_mpaa_rating";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -23,5 +25,10 @@ public class CountByMpaaCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -10,6 +10,8 @@ import java.util.List;
 
 public class Validator {
     private String validate;
+    private boolean needMovie;
+    private boolean needPerson;
     public Validator(String validate){
         this.validate=validate;
     }
@@ -29,5 +31,17 @@ public class Validator {
             }
         }
         return true;
+    }
+    void movie(){
+        needMovie=true;
+    };
+    boolean needMovie(){
+        return needMovie;
+    }
+    void person(){
+        needPerson=true;
+    }
+    boolean needPerson(){
+        return needPerson;
     }
 }

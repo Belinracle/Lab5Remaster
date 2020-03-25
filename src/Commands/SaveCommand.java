@@ -15,10 +15,12 @@ public class SaveCommand implements Command {
     private String path;
     private Parser parser;
     private IDFactory id;
+    private String name;
     SaveCommand(CollectionInterface ci, String path,CommandFetch cf, Parser parser) throws IOException {
         this.ci=ci;
         this.path=path;
         this.parser=parser;
+        name="save";
         cf.addCommand("save",this);
         id= new IDFactory("IdContainer.txt");
     }
@@ -34,5 +36,10 @@ public class SaveCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -9,9 +9,11 @@ import java.util.List;
 public class InfoCommand implements Command {
     private CollectionInterface coll;
     private Validator val = new Validator("Any");
+    private String name;
     InfoCommand(CollectionInterface coll, CommandFetch cf){
         this.coll = coll;
         cf.addCommand("info",this);
+        name="info";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -21,5 +23,10 @@ public class InfoCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

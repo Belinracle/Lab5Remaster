@@ -12,10 +12,12 @@ public class LoadCommand implements Command {
     private Validator val = new Validator("Path");
     private CollectionInterface ci;
     private Parser pars;
+    private String name;
     LoadCommand(CollectionInterface ci, Parser pars, CommandFetch cf){
         cf.addCommand("load",this);
         this.ci = ci;
         this.pars=pars;
+        name="load";
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
@@ -33,5 +35,10 @@ public class LoadCommand implements Command {
     @Override
     public Validator getValidator() {
         return val;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

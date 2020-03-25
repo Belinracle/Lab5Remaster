@@ -7,4 +7,5 @@ import java.util.List;
 public interface Command {
     void execute(IOinterface io, List<String> args) throws IOException;
     Validator getValidator();
+    String getName();
 }
