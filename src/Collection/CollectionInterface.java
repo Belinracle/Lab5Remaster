@@ -4,8 +4,6 @@ import IO.IOinterface;
 import Parsers.Parser;
 
 import java.io.IOException;
-import java.util.Collection;
-
 public interface CollectionInterface {
     String info();
     String show();
@@ -19,5 +17,6 @@ public interface CollectionInterface {
     void remove_all_by_screenwriter(Person pers, IOinterface io);
     long count_by_mpaa_rating(MpaaRating rating);
     String print_ascending();
-    void save(Parser pars, IOinterface iOinterface);
+    void save(Parser pars, IOinterface iOFile);
+    void load(Parser pars, IOinterface ioFile) throws IOException;
 }

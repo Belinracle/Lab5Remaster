@@ -11,7 +11,7 @@ import java.util.List;
 public class AddCommand implements Command {
     private CollectionInterface ci;
     private Factory movFac;
-    private Validator val =new Validator("Any");
+    private Validator val =new Validator("String,Integer");
     AddCommand(CollectionInterface ci,Factory fac,CommandFetch cf){
         cf.addCommand("add", this);
         this.ci = ci;
@@ -19,8 +19,10 @@ public class AddCommand implements Command {
     }
     @Override
     public void execute(IOinterface io, List<String> args) throws IOException {
-        ci.add(movFac.createMovie(io,args));
-        io.writeln("Спасибо, фильм добавлен в коллекцию");
+        if(val.validate(args))
+        {ci.add(movFac.createMovie(io,args));
+        io.writeln("Спасибо, фильм добавлен в коллекцию");}
+        else io.writeln("введены неверные аргументы");
     }
 
     @Override

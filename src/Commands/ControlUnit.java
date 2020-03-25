@@ -6,10 +6,10 @@ import Factory.Factory;
 import Factory.IOfactory;
 import IO.IOconsole;
 import IO.IOinterface;
+import Parsers.CSVParser;
+import Parsers.Parser;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 
 public class ControlUnit {
     private CommandFetch cf;
@@ -23,20 +23,20 @@ public class ControlUnit {
         Command show = new ShowCommand(dmc, cf);
         Command info = new InfoCommand( dmc,cf);
         Command help = new HelpCommand(cf, "SomeFile.txt");
-//        Command update = new UpdateIDCommand(cf, dmc);
-//        IDFactory idFac = new IDFactory("IdContainer.txt");
-//        Command save = new SaveCommand(idFac, cf,dmc);
-//        Command load = new LoadCommand(cf, fw, dmc);
-//        Command remFirst = new RemoveFirstComman(dmc, cf);
-//        Command removeID = new Remove_by_idCommand(cf, dmc);
-//        Command clear = new ClearCommand(dmc, cf);
-//        Command exit = new ExitCommand(cf);
-//        Command addIfMax = new AddIfMaxCommand(dmc,cf);
-//        Command addIfMin = new AddIfMinCommand(dmc,cf);
-//        Command removeSc = new RemoveAllByScCommand(dmc,cf);
-//        Command coutByMpaaRating = new CountByMpaaRating(dmc,cf);
-//        Command printAsc = new PrintAscendingCommand(dmc,cf);
-//        Command execute = new ExecuteScriptCommand(cf,dmc);
+        Command update = new UpdateCommand(dmc,iomov,cf);
+        Parser csvPars = new CSVParser();
+        Command save = new SaveCommand( dmc,"Save.txt",cf,csvPars);
+        Command load = new LoadCommand(dmc,csvPars,cf);
+        Command remFirst = new RemoveFirstCommand(dmc, cf);
+        Command removeID = new RemoveCommand(dmc,cf);
+        Command clear = new ClearCommand(dmc, cf);
+        Command exit = new ExitCommand(cf);
+        Command addIfMax = new AddIfMaxCommand(dmc,cf,iomov);
+        Command addIfMin = new AddIfMinCommand(dmc,cf,iomov);
+        Command removeSc = new RemoveAllByScCommand(dmc,cf,iomov);
+        Command coutByMpaaRating = new CountByMpaaCommand(dmc,cf);
+        Command printAsc = new PrintAscendingCommand(dmc,cf);
+        Command execute = new ExecuteCommand(cf);
     }
     public void process(String str) throws IOException {
         cf.run(str,iOinterface);

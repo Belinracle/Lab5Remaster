@@ -30,17 +30,27 @@ public class IOconsole implements  IOinterface {
     }
 
     @Override
-    public String readLine() throws IOException {
+    public String readLine() {
         return scan.nextLine();
     }
 
     @Override
-    public boolean hasNext(){
+    public boolean hasNextLine(){
         return scan.hasNextLine();
     }
 
     @Override
     public boolean isInteractive() {
         return interactive ;
+    }
+
+    @Override
+    public Object read() {
+        return scan.next();
+    }
+
+    @Override
+    public void close() throws IOException {
+        out.close();
     }
 }

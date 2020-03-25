@@ -3,20 +3,22 @@ info sdfndfosd
 show
 print_ascending
 add
-246
-246
-246
-246
-246
-24
-624
-62
-46
-26
-2
-6
-24
+4
+4
+4
+5
+comedy
+g
+8
+8
+8
+8
+8
+8
+8
+
 save
 save
 save
+execute Script.txt
 

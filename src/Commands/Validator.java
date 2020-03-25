@@ -18,6 +18,16 @@ public class Validator {
         if (validate.equals("Path")){try{ new FileReader(string.get(1)).close();return true;}catch (IndexOutOfBoundsException | IOException e){return false;}}
         if (validate.equals("Rating")){try{ MpaaRating.valueOf(string.get(1));return true;}catch (IndexOutOfBoundsException |IllegalArgumentException e){return false;}}
         if (validate.equals("Any")){return true;}
+        if (validate.equals("String,Integer")){
+            try {
+                Integer.parseInt(string.get(2));
+                return true;
+            }catch (NumberFormatException e){
+                return false;
+            }catch (IndexOutOfBoundsException e){
+                return true;
+            }
+        }
         return true;
     }
 }

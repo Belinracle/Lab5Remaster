@@ -142,10 +142,24 @@ public class DeQueCollection implements CollectionInterface {
     public void save(Parser pars, IOinterface iOinterface) {
         coll.forEach(x-> {
             try {
-                iOinterface.writeln(pars.ser(x));
+                iOinterface.write(pars.ser(x));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void load(Parser pars, IOinterface ioFile) throws IOException {
+        try {
+            String str = "";
+            while (ioFile.hasNextLine()) {
+                str = str + ioFile.readLine() + "\n";
+            }
+            coll.addAll(pars.deSer(str));
+        }catch (NullPointerException e ){
+            ioFile.writeln("В файле нет объектов");
+        }
     }
 }

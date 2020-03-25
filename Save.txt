@@ -1,2 +1,0 @@
-id,Name,oscCoun,CX,CY,MPR,G,ScN,ScId,ScW,ScLN,ScLX,ScLY,ScLZ
-53,35,35,35,35.0,G,COMEDY,5,5,5,5,5,5,5.0

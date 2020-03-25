@@ -16,17 +16,22 @@ public class CSVParser implements Parser {
         for(String str:args){
             sb.append(str).append(",");
         }
-        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length()-1).append("\n");
         return sb.toString();
     }
 
     @Override
     public Collection<Movie> deSer(String str) {
-        List<Movie> movies = new ArrayList<>();
-        String[] linees = str.split("\n");
-        for(String line:linees){
-            movies.add(new Movie(Arrays.asList(line.split(","))));
+        try {
+            List<Movie> movies = new ArrayList<>();
+            String[] linees = str.split("\n");
+            for (String line : linees) {
+                movies.add(new Movie(Arrays.asList(line.split(","))));
+            }
+            return movies;
+        }catch(NumberFormatException e){
+            System.out.println(e.getCause());
         }
-        return movies;
+        return null;
     }
 }
